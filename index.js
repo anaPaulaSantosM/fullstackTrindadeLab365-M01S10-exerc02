@@ -84,21 +84,21 @@ app.delete('/places/:id', async (request, response) => {
         app.post('/users', async (request, response) => {
             try {
                 //revisar
-               const data = {
+               const newUser = {
                 name: request.body.name,
                 email: request.body.email,
                 username: request.body.username,
                 senha: request.body.senha
                } 
         
-               const user = await User.create(data)
+               const user = await User.create(newUser)
         
-               response.status(201).json(users)
+               response.status(201).json(user)
         
         
             } catch (error) {
                 console.log(error)
-                response.status(500).json({message: 'Não possivel concluir a operação'})
+                response.status(500).json({message: 'Não possivel processar a solicitação.'})
             }
         })
 app.listen(3333, () => console.log("Servidor online"))
